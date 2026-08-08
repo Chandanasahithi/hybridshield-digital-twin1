@@ -1,43 +1,68 @@
-import { Bell, Search, UserCircle } from "lucide-react";
-
 function Navbar() {
-  const currentTime = new Date().toLocaleTimeString();
-
   return (
-    <div className="flex items-center justify-between bg-slate-800 p-4 rounded-xl shadow-lg">
+    <header className="h-20 bg-white border-b border-[#e3ecf2] flex items-center justify-between px-6 lg:px-8 sticky top-0 z-30">
 
-      {/* Left */}
-      <h1 className="text-2xl font-bold text-cyan-400">
-        🛡 HybridShield
-      </h1>
+      {/* LEFT */}
 
-      {/* Search */}
-      <div className="flex items-center bg-slate-700 rounded-lg px-3 py-2 w-80">
-        <Search size={18} className="text-gray-400" />
-        <input
-          type="text"
-          placeholder="Search devices..."
-          className="bg-transparent outline-none text-white ml-2 w-full"
-        />
+      <div>
+
+        <p className="text-xs text-[#a2c1d1] uppercase tracking-widest font-semibold">
+          HybridShield
+        </p>
+
+        <p className="text-sm font-semibold text-[#2f4157]">
+          Security Operations Center
+        </p>
+
       </div>
 
-      {/* Right */}
-      <div className="flex items-center gap-6">
+      {/* RIGHT */}
 
-        <Bell className="text-white cursor-pointer" />
+      <div className="flex items-center gap-4">
 
-        <div className="flex items-center gap-2">
-          <UserCircle size={32} className="text-cyan-400" />
-          <span className="text-white">Admin</span>
+        {/* System Status */}
+
+        <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-[#f3f6f9] border border-[#e3ecf2]">
+
+          <span className="w-2.5 h-2.5 bg-green-500 rounded-full"></span>
+
+          <span className="text-sm font-medium text-[#567c8e]">
+            All Systems Operational
+          </span>
+
         </div>
 
-        <span className="text-gray-300">
-          {currentTime}
-        </span>
+        {/* Notification */}
+
+        <button className="w-10 h-10 rounded-xl bg-[#f3f6f9] border border-[#e3ecf2] flex items-center justify-center hover:bg-[#e3ecf2] transition">
+          🔔
+        </button>
+
+        {/* User */}
+
+        <div className="flex items-center gap-3">
+
+          <div className="w-10 h-10 rounded-xl bg-[#2f4157] text-white flex items-center justify-center font-bold">
+            A
+          </div>
+
+          <div className="hidden md:block">
+
+            <p className="text-sm font-bold text-[#2f4157]">
+              Administrator
+            </p>
+
+            <p className="text-xs text-[#567c8e]">
+              Security Analyst
+            </p>
+
+          </div>
+
+        </div>
 
       </div>
 
-    </div>
+    </header>
   );
 }
 

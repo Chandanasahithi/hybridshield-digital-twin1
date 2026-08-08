@@ -1,77 +1,75 @@
 function AlertPanel({ attackMode }) {
-  const normalLogs = [
-    {
-      time: "10:00",
-      message: "VPN connected successfully",
-      level: "Low",
-    },
-    {
-      time: "10:15",
-      message: "Firewall rules updated",
-      level: "Medium",
-    },
-    {
-      time: "10:30",
-      message: "User login authenticated",
-      level: "Low",
-    },
-  ];
-
-  const attackLogs = [
-    {
-      time: "10:31",
-      message: "Unauthorized login detected",
-      level: "High",
-    },
-    {
-      time: "10:32",
-      message: "Firewall under heavy traffic",
-      level: "Critical",
-    },
-    {
-      time: "10:33",
-      message: "Database access blocked",
-      level: "Critical",
-    },
-    {
-      time: "10:34",
-      message: "AI isolated suspicious server",
-      level: "High",
-    },
-  ];
-
-  const logs = attackMode ? attackLogs : normalLogs;
+  const alerts = attackMode
+    ? [
+        {
+          title: "Suspicious Login Attempt",
+          description: "Multiple unauthorized authentication attempts detected.",
+          severity: "HIGH",
+        },
+        {
+          title: "Network Anomaly",
+          description: "Unusual traffic pattern detected in the hybrid network.",
+          severity: "HIGH",
+        },
+        {
+          title: "Device Risk",
+          description: "One monitored device requires immediate investigation.",
+          severity: "MEDIUM",
+        },
+      ]
+    : [
+        {
+          title: "Firewall Monitoring",
+          description: "Firewall is operating normally.",
+          severity: "LOW",
+        },
+        {
+          title: "VPN Status",
+          description: "VPN gateway is secure and operational.",
+          severity: "LOW",
+        },
+      ];
 
   return (
-    <div className="bg-slate-800 rounded-xl p-6 mt-8 shadow-lg">
+    <div className="space-y-3">
 
-      <h2 className="text-2xl font-bold text-cyan-400 mb-6">
-        Live Security Activity
-      </h2>
-
-      {logs.map((log, index) => (
+      {alerts.map((alert, index) => (
         <div
           key={index}
-          className="flex justify-between border-b border-slate-700 py-3"
+          className="p-4 rounded-xl bg-[#f3f6f9] border border-[#e3ecf2]"
         >
-          <div>
-            <p className="font-semibold">{log.message}</p>
-            <p className="text-gray-400 text-sm">{log.time}</p>
+
+          <div className="flex items-start justify-between gap-4">
+
+            <div>
+
+              <h3 className="font-bold text-[#2f4157]">
+                {alert.title}
+              </h3>
+
+              <p className="text-sm text-[#567c8e] mt-1">
+                {alert.description}
+              </p>
+
+            </div>
+
+            <span
+              className={`text-xs font-bold px-3 py-1 rounded-full ${
+                alert.severity === "HIGH"
+                  ? "bg-red-100 text-red-700"
+                  : alert.severity === "MEDIUM"
+                  ? "bg-yellow-100 text-yellow-700"
+                  : "bg-green-100 text-green-700"
+              }`}
+            >
+              {alert.severity}
+            </span>
+
           </div>
 
-          <span
-            className={`font-bold ${
-              log.level === "Critical"
-                ? "text-red-500"
-                : log.level === "High"
-                ? "text-orange-400"
-                : "text-yellow-400"
-            }`}
-          >
-            {log.level}
-          </span>
         </div>
       ))}
+
     </div>
   );
 }

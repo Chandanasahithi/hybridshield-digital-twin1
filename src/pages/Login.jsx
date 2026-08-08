@@ -6,325 +6,384 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    if (email && password) {
+    if (email.trim() && password.trim()) {
       navigate("/dashboard");
     } else {
-      alert("Please enter email and password.");
+      alert("Please enter your email and password.");
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950 flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-[#f3f6f9] flex items-center justify-center px-6 py-10 relative overflow-hidden">
 
-      {/* Background Glow */}
-      <div className="absolute w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl top-10 left-20"></div>
+      {/* ================= BACKGROUND SHAPES ================= */}
 
-      <div className="absolute w-96 h-96 bg-blue-500/20 rounded-full blur-3xl bottom-10 right-20"></div>
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#a2c1d1]/30 rounded-full blur-3xl" />
 
-      {/* Login Card */}
+      <div className="absolute -bottom-40 -right-32 w-[500px] h-[500px] bg-[#c7d9e5]/40 rounded-full blur-3xl" />
 
-      <div className="backdrop-blur-xl bg-white/10 border border-cyan-500/30 rounded-3xl shadow-2xl w-[900px] flex overflow-hidden">
+      {/* ================= MAIN CARD ================= */}
 
-        {/* Left Side */}
+      <div className="relative w-full max-w-6xl min-h-[650px] bg-white/80 backdrop-blur-xl border border-white rounded-[32px] shadow-[0_25px_80px_rgba(47,65,87,0.18)] overflow-hidden flex flex-col lg:flex-row">
 
-<div className="w-1/2 bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950 p-10 flex flex-col justify-between">
+        {/* =====================================================
+            LEFT SIDE
+        ====================================================== */}
 
-  <div>
+        <div className="lg:w-[55%] relative bg-gradient-to-br from-[#2f4157] via-[#3d596d] to-[#567c8e] p-10 lg:p-14 text-white overflow-hidden">
 
-    <h1 className="text-5xl font-extrabold text-cyan-400">
-      HybridShield
-    </h1>
+          {/* Decorative circles */}
 
-    <p className="text-gray-300 mt-3 text-lg">
-      AI-Powered Hybrid Data Center Digital Twin
-    </p>
+          <div className="absolute w-72 h-72 rounded-full border border-white/10 -top-24 -right-24" />
 
-    <p className="text-gray-500 mt-2">
-      Monitor • Detect • Protect • Simulate
-    </p>
+          <div className="absolute w-96 h-96 rounded-full border border-white/10 -bottom-48 -left-40" />
 
-  </div>
+          <div className="relative z-10">
 
-  {/* Mini Network Topology */}
+            {/* Brand */}
 
-  <div className="mt-10">
+            <div className="flex items-center gap-4">
 
-    <h2 className="text-cyan-300 text-xl font-bold mb-6">
-      Infrastructure Overview
-    </h2>
+              <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center text-2xl shadow-lg">
+                🛡️
+              </div>
 
-    <div className="flex flex-col items-center text-2xl space-y-2">
+              <div>
+                <h1 className="text-3xl lg:text-4xl font-bold tracking-tight">
+                  HybridShield
+                </h1>
 
-      <span>🌍 Internet</span>
+                <p className="text-[#c7d9e5] text-xs tracking-[0.25em] uppercase mt-1">
+                  Security Intelligence
+                </p>
+              </div>
 
-      <span className="text-cyan-400">↓</span>
-
-      <span>🔥 Firewall</span>
-
-      <span className="text-cyan-400">↓</span>
-
-      <span>🔒 VPN Gateway</span>
-
-      <span className="text-cyan-400">↓</span>
-
-      <span>🖥️ Private Data Center</span>
-
-      <span className="text-cyan-400">↓</span>
-
-      <span>🗄️ Database</span>
-
-      <span className="text-cyan-400">↓</span>
-
-      <span>☁️ Azure Cloud</span>
-
-    </div>
-
-  </div>
-
-  {/* Live Status */}
-
-  <div className="grid grid-cols-2 gap-4 mt-10">
-
-    <div className="bg-slate-800/70 rounded-xl p-4 border border-green-500">
-      <p className="text-green-400 font-bold">🟢 Firewall</p>
-      <p className="text-gray-300 text-sm">Online</p>
-    </div>
-
-    <div className="bg-slate-800/70 rounded-xl p-4 border border-green-500">
-      <p className="text-green-400 font-bold">☁ Cloud</p>
-      <p className="text-gray-300 text-sm">Connected</p>
-    </div>
-
-    <div className="bg-slate-800/70 rounded-xl p-4 border border-green-500">
-      <p className="text-green-400 font-bold">🔒 VPN</p>
-      <p className="text-gray-300 text-sm">Secure</p>
-    </div>
-
-    <div className="bg-slate-800/70 rounded-xl p-4 border border-green-500">
-      <p className="text-green-400 font-bold">🛡 Security</p>
-      <p className="text-gray-300 text-sm">96% Score</p>
-    </div>
-
-  </div>
-
-  {/* Footer */}
-
-  <div className="mt-8 border-t border-slate-700 pt-4">
-
-    <p className="text-gray-500 text-sm">
-      Enterprise Security Console
-    </p>
-
-    <p className="text-cyan-400 text-sm mt-1">
-      Version 1.0 | Cisco Internship Prototype
-    </p>
-
-  </div>
-
-</div>
-
-        <div className="w-1/2 p-10 flex flex-col justify-center bg-gradient-to-b from-cyan-900/20 to-slate-900">
-
-          <h1 className="text-5xl font-bold text-cyan-400">
-            HybridShield
-          </h1>
-
-          <p className="text-gray-300 mt-4 text-lg">
-            AI-Powered Hybrid Data Center Digital Twin
-          </p>
-
-          <div className="mt-10 space-y-5">
-
-            <div className="flex items-center gap-3 text-white">
-              🛡 <span>Real-Time Threat Detection</span>
             </div>
 
-            <div className="flex items-center gap-3 text-white">
-              ☁ <span>Hybrid Cloud Monitoring</span>
+            {/* Main heading */}
+
+            <div className="mt-16 max-w-xl">
+
+              <p className="text-[#a2c1d1] uppercase tracking-[0.25em] text-sm font-semibold mb-4">
+                Digital Twin Security Platform
+              </p>
+
+              <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
+                Secure your
+                <span className="text-[#c7d9e5]"> hybrid infrastructure.</span>
+              </h2>
+
+              <p className="text-[#e3ecf2]/80 text-lg leading-relaxed mt-6 max-w-lg">
+                AI-powered monitoring and simulation for modern hybrid
+                data center environments.
+              </p>
+
             </div>
 
-            <div className="flex items-center gap-3 text-white">
-              🌐 <span>Network Digital Twin</span>
+            {/* ================= NETWORK VISUAL ================= */}
+
+            <div className="mt-14 relative">
+
+              <p className="text-[#e3ecf2]/60 text-xs uppercase tracking-widest mb-5">
+                Hybrid Infrastructure
+              </p>
+
+              <div className="flex items-center gap-2 sm:gap-4">
+
+                {/* Internet */}
+
+                <div className="flex flex-col items-center">
+
+                  <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center text-xl">
+                    🌐
+                  </div>
+
+                  <span className="text-xs text-[#e3ecf2]/70 mt-2">
+                    Internet
+                  </span>
+
+                </div>
+
+                <div className="flex-1 h-px bg-[#a2c1d1]/50" />
+
+                {/* Firewall */}
+
+                <div className="flex flex-col items-center">
+
+                  <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center text-xl">
+                    🔥
+                  </div>
+
+                  <span className="text-xs text-[#e3ecf2]/70 mt-2">
+                    Firewall
+                  </span>
+
+                </div>
+
+                <div className="flex-1 h-px bg-[#a2c1d1]/50" />
+
+                {/* Data Center */}
+
+                <div className="flex flex-col items-center">
+
+                  <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center text-xl">
+                    🖥️
+                  </div>
+
+                  <span className="text-xs text-[#e3ecf2]/70 mt-2">
+                    Data Center
+                  </span>
+
+                </div>
+
+                <div className="flex-1 h-px bg-[#a2c1d1]/50" />
+
+                {/* Cloud */}
+
+                <div className="flex flex-col items-center">
+
+                  <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center text-xl">
+                    ☁️
+                  </div>
+
+                  <span className="text-xs text-[#e3ecf2]/70 mt-2">
+                    Cloud
+                  </span>
+
+                </div>
+
+              </div>
+
             </div>
 
-            <div className="flex items-center gap-3 text-white">
-              🤖 <span>AI Security Recommendations</span>
+            {/* ================= FEATURES ================= */}
+
+            <div className="grid grid-cols-2 gap-3 mt-12 max-w-lg">
+
+              <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-4">
+
+                <p className="text-lg">🛡️</p>
+
+                <p className="font-semibold mt-2 text-sm">
+                  Threat Detection
+                </p>
+
+                <p className="text-xs text-[#e3ecf2]/60 mt-1">
+                  Real-time monitoring
+                </p>
+
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-4">
+
+                <p className="text-lg">🤖</p>
+
+                <p className="font-semibold mt-2 text-sm">
+                  AI Insights
+                </p>
+
+                <p className="text-xs text-[#e3ecf2]/60 mt-1">
+                  Smart recommendations
+                </p>
+
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-4">
+
+                <p className="text-lg">🌐</p>
+
+                <p className="font-semibold mt-2 text-sm">
+                  Digital Twin
+                </p>
+
+                <p className="text-xs text-[#e3ecf2]/60 mt-1">
+                  Network visualization
+                </p>
+
+              </div>
+
+              <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-xl p-4">
+
+                <p className="text-lg">⚡</p>
+
+                <p className="font-semibold mt-2 text-sm">
+                  Attack Simulation
+                </p>
+
+                <p className="text-xs text-[#e3ecf2]/60 mt-1">
+                  Security testing
+                </p>
+
+              </div>
+
             </div>
 
           </div>
 
         </div>
 
-        {/* Left Side */}
+        {/* =====================================================
+            RIGHT SIDE LOGIN
+        ====================================================== */}
 
-<div className="w-1/2 bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950 p-10 flex flex-col justify-between">
+        <div className="lg:w-[45%] bg-white p-10 lg:p-14 flex flex-col justify-center">
 
-  <div>
+          {/* Header */}
 
-    <h1 className="text-5xl font-extrabold text-cyan-400">
-      HybridShield
-    </h1>
+          <div className="max-w-md mx-auto w-full">
 
-    <p className="text-gray-300 mt-3 text-lg">
-      AI-Powered Hybrid Data Center Digital Twin
-    </p>
+            <div className="mb-10">
 
-    <p className="text-gray-500 mt-2">
-      Monitor • Detect • Protect • Simulate
-    </p>
+              <p className="text-[#567c8e] text-sm font-semibold uppercase tracking-widest mb-3">
+                Secure Console
+              </p>
 
-  </div>
+              <h2 className="text-4xl font-bold text-[#2f4157]">
+                Welcome back
+              </h2>
 
-  {/* Mini Network Topology */}
+              <p className="text-[#567c8e] mt-3">
+                Sign in to access your HybridShield dashboard.
+              </p>
 
-  <div className="mt-10">
+            </div>
 
-    <h2 className="text-cyan-300 text-xl font-bold mb-6">
-      Infrastructure Overview
-    </h2>
+            {/* FORM */}
 
-    <div className="flex flex-col items-center text-2xl space-y-2">
+            <form onSubmit={handleLogin} className="space-y-6">
 
-      <span>🌍 Internet</span>
+              {/* Email */}
 
-      <span className="text-cyan-400">↓</span>
+              <div>
 
-      <span>🔥 Firewall</span>
+                <label className="block text-sm font-semibold text-[#2f4157] mb-2">
+                  Email Address
+                </label>
 
-      <span className="text-cyan-400">↓</span>
+                <input
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-5 py-4 rounded-xl bg-[#f3f6f9] border border-[#c7d9e5] text-[#2f4157] placeholder-[#a2c1d1] outline-none transition focus:border-[#567c8e] focus:ring-4 focus:ring-[#a2c1d1]/20"
+                />
 
-      <span>🔒 VPN Gateway</span>
+              </div>
 
-      <span className="text-cyan-400">↓</span>
+              {/* Password */}
 
-      <span>🖥️ Private Data Center</span>
+              <div>
 
-      <span className="text-cyan-400">↓</span>
+                <div className="flex justify-between items-center mb-2">
 
-      <span>🗄️ Database</span>
+                  <label className="text-sm font-semibold text-[#2f4157]">
+                    Password
+                  </label>
 
-      <span className="text-cyan-400">↓</span>
+                  <button
+                    type="button"
+                    className="text-xs font-semibold text-[#567c8e] hover:text-[#2f4157]"
+                  >
+                    Forgot password?
+                  </button>
 
-      <span>☁️ Azure Cloud</span>
+                </div>
 
-    </div>
+                <input
+                  type="password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-5 py-4 rounded-xl bg-[#f3f6f9] border border-[#c7d9e5] text-[#2f4157] placeholder-[#a2c1d1] outline-none transition focus:border-[#567c8e] focus:ring-4 focus:ring-[#a2c1d1]/20"
+                />
 
-  </div>
+              </div>
 
-  {/* Live Status */}
+              {/* Remember */}
 
-  <div className="grid grid-cols-2 gap-4 mt-10">
+              <label className="flex items-center gap-3 cursor-pointer">
 
-    <div className="bg-slate-800/70 rounded-xl p-4 border border-green-500">
-      <p className="text-green-400 font-bold">🟢 Firewall</p>
-      <p className="text-gray-300 text-sm">Online</p>
-    </div>
+                <input
+                  type="checkbox"
+                  checked={remember}
+                  onChange={(e) => setRemember(e.target.checked)}
+                  className="w-4 h-4 accent-[#2f4157]"
+                />
 
-    <div className="bg-slate-800/70 rounded-xl p-4 border border-green-500">
-      <p className="text-green-400 font-bold">☁ Cloud</p>
-      <p className="text-gray-300 text-sm">Connected</p>
-    </div>
+                <span className="text-sm text-[#567c8e]">
+                  Remember me
+                </span>
 
-    <div className="bg-slate-800/70 rounded-xl p-4 border border-green-500">
-      <p className="text-green-400 font-bold">🔒 VPN</p>
-      <p className="text-gray-300 text-sm">Secure</p>
-    </div>
-
-    <div className="bg-slate-800/70 rounded-xl p-4 border border-green-500">
-      <p className="text-green-400 font-bold">🛡 Security</p>
-      <p className="text-gray-300 text-sm">96% Score</p>
-    </div>
-
-  </div>
-
-  {/* Footer */}
-
-  <div className="mt-8 border-t border-slate-700 pt-4">
-
-    <p className="text-gray-500 text-sm">
-      Enterprise Security Console
-    </p>
-
-    <p className="text-cyan-400 text-sm mt-1">
-      Version 1.0 | Cisco Internship Prototype
-    </p>
-
-  </div>
-
-</div>
-
-        <div className="w-1/2 p-10">
-
-          <h2 className="text-3xl font-bold text-white mb-2">
-            Secure Login
-          </h2>
-
-          <p className="text-gray-400 mb-8">
-            Sign in to access HybridShield Dashboard
-          </p>
-
-          <form onSubmit={handleLogin}>
-
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="w-full p-4 rounded-xl bg-slate-800 text-white border border-cyan-500 mb-5 focus:outline-none"
-              value={email}
-              onChange={(e)=>setEmail(e.target.value)}
-            />
-
-            <input
-              type="password"
-              placeholder="Password"
-              className="w-full p-4 rounded-xl bg-slate-800 text-white border border-cyan-500 mb-5 focus:outline-none"
-              value={password}
-              onChange={(e)=>setPassword(e.target.value)}
-            />
-
-            <div className="flex justify-between text-sm text-gray-300 mb-6">
-
-              <label>
-                <input type="checkbox" className="mr-2"/>
-                Remember Me
               </label>
 
-              <span className="text-cyan-400 cursor-pointer">
-                Forgot Password?
-              </span>
+              {/* LOGIN BUTTON */}
+
+              <button
+                type="submit"
+                className="w-full py-4 rounded-xl bg-[#2f4157] hover:bg-[#567c8e] text-white font-bold transition-all duration-300 shadow-lg shadow-[#2f4157]/20 hover:shadow-xl"
+              >
+                Sign in to HybridShield
+              </button>
+
+            </form>
+
+            {/* SECURITY STATUS */}
+
+            <div className="mt-10 border-t border-[#e3ecf2] pt-8">
+
+              <div className="flex items-center justify-between">
+
+                <div className="flex items-center gap-3">
+
+                  <div className="w-10 h-10 rounded-xl bg-[#e3ecf2] flex items-center justify-center">
+                    🛡️
+                  </div>
+
+                  <div>
+
+                    <p className="text-sm font-semibold text-[#2f4157]">
+                      Secure Connection
+                    </p>
+
+                    <p className="text-xs text-[#567c8e]">
+                      HybridShield Console
+                    </p>
+
+                  </div>
+
+                </div>
+
+                <div className="flex items-center gap-2">
+
+                  <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
+
+                  <span className="text-xs font-semibold text-[#567c8e]">
+                    Online
+                  </span>
+
+                </div>
+
+              </div>
 
             </div>
 
-            <button
-              type="submit"
-              className="w-full bg-cyan-500 hover:bg-cyan-600 transition duration-300 text-black font-bold py-4 rounded-xl"
-            >
-              Login to Dashboard
-            </button>
+            {/* FOOTER */}
 
-          </form>
+            <div className="text-center mt-10">
 
-          {/* Footer Status */}
+              <p className="text-xs text-[#a2c1d1]">
+                HybridShield Security Platform
+              </p>
 
-          <div className="grid grid-cols-2 gap-4 mt-10">
+              <p className="text-xs text-[#c7d9e5] mt-1">
+                Cisco Internship Prototype • Version 1.0
+              </p>
 
-            <div className="bg-slate-800 rounded-xl p-3 text-center">
-              🟢 Firewall Online
-            </div>
-
-            <div className="bg-slate-800 rounded-xl p-3 text-center">
-              ☁ Cloud Connected
-            </div>
-
-            <div className="bg-slate-800 rounded-xl p-3 text-center">
-              🔒 VPN Secure
-            </div>
-
-            <div className="bg-slate-800 rounded-xl p-3 text-center">
-              🖥 12 Servers Active
             </div>
 
           </div>
